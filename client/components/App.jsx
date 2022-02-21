@@ -1,25 +1,34 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Routes, Route } from 'react-router-dom'
 
-import { fetchFruits } from '../actions'
+import { fetchBlog } from '../actions'
+
+import Header from './Partials/Header'
+import Footer from './Partials/Footer'
+// import NaviBar from './Partials/NaviBar'
+import IdentityValues from './Pages/IdentityValues'
+import Reflections from './Pages/Reflections'
+import TechBlog from './Pages/TechBlog'
 
 function App () {
-  const fruits = useSelector(state => state.fruits)
+  // const blog = useSelector(state => state.blog)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchFruits())
+    dispatch(fetchBlog())
   }, [])
 
   return (
     <>
-      <div className='app'>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>
-          {fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
+      <Header />
+      <div>
+        <Routes>
+          <Route path='/identityvalues' element={<IdentityValues />} />
+          <Route path='/reflections' element={<Reflections />} />
+          <Route path='/techBlog' element={<TechBlog />} />
+        </Routes>
       </div>
+      <Footer />
     </>
   )
 }
