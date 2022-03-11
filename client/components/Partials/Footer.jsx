@@ -13,7 +13,7 @@ function Footer (props) {
       <Box bg='#5d8155'>
         <Center>
           <div>&copy; {copyright}</div>
-          <div>{developer}</div>
+          <div> _Developer_ {developer}</div>
         </Center>
       </Box>
     </div>

@@ -1,6 +1,10 @@
-import { getBlog } from '../apis/blog'
+import { getTechBlog } from '../apis/blog'
 
 export const SET_BLOG = 'SET_BLOG'
+export const SET_POSTS_PENDING = 'SET_POSTS_PENDING'
+export const SET_POSTS_SUCCESS = 'SET_POSTS_SUCCESS'
+export const SET_ERROR = 'SET_ERROR'
+export const SET_POST = 'SET_POST'
 
 export function setBlog (blog) {
   return {
@@ -9,12 +13,55 @@ export function setBlog (blog) {
   }
 }
 
-export function fetchBlog () {
+export function fetchTechBlog () {
   return dispatch => {
-    return getBlog()
+    return getTechBlog()
       .then(blog => {
         dispatch(setBlog(blog))
         return null
       })
+      .catch(err => {
+        dispatch(setError(err.message))
+      })
+  }
+}
+
+export function addNewPost (newPost) {
+  return dispatch => {
+    return addNewPost(newPost)
+      .then(posts => {
+        dispatch(setPostsSuccess(posts))
+        return null
+      })
+      .catch(err => {
+        dispatch(setError(err.message))
+      })
+  }
+}
+
+export function setPostsPending () {
+  return {
+    type: SET_POSTS_PENDING
+  }
+}
+
+export function setPostsSuccess (posts) {
+  return {
+    type: SET_POSTS_SUCCESS,
+    posts
+  }
+}
+
+export function setError (errMessage) {
+  return {
+    type: SET_ERROR,
+    errMessage
+  }
+}
+
+export function setNewPost (errMessage) {
+  return {
+    type: SET_POST,
+    errMessage
   }
 }

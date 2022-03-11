@@ -1,32 +1,34 @@
 import React from 'react'
+// import { Link } from 'react-router-dom'
 
 import {
-  Link,
+  Stack,
   Box,
-  Center
+  Center,
+  Heading,
+  Button
 } from '@chakra-ui/react'
-// import data from '../fauxDb.js'
 
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header () {
   return (
     <div >
-      <Box bg='purple.200'>
+      <Box bg='#5d8155'>
         <Center>
-          <h1 >Life of Yodita</h1>
+          <Heading >Life of Yodita</Heading>
         </Center>
       </Box>
-      <nav >
-        <ul >
-          <li >
-            <Link to='/'> Home</Link>
-            <Link to='/identityvalues' >Identity and Values</Link>
-            <Link to='/reflections' >Reflections</Link>
-            <Link to='/techblog' >Tech Blog</Link>
-          </li>
-        </ul>
-      </nav>
+      <Box bg='#5d8155'>
+        <Center>
+          <Stack spacing={4} direction='row' align='center'>
+            <Link to='/'> <Button bg='#815939' to='./'> Home</Button> </Link>
+            <Link to='../Pages/IdentityValues'> <Button bg='#815939' >Identity and Values</Button> </Link>
+            <Link to='../Pages/Reflections'> <Button bg='#815939' >Reflections</Button> </Link>
+            <Link to='../Pages/TechBlog'> <Button bg='#815939' >Tech Blog</Button> </Link>
+          </Stack>
+        </Center>
+      </Box>
     </div>
   )
 }

@@ -7,7 +7,7 @@ import {
 
 // import { Link } from 'react-router-dom'
 
-function Header () {
+function Navibar () {
   return (
     <div >
       <Box bg='#815939'>
@@ -29,4 +29,4 @@ function Header () {
   )
 }
 
-export default Header
+export default Navibar

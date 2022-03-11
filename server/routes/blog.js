@@ -4,16 +4,25 @@ const db = require('../db/blog')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.getBlog()
-    .then(results => {
-      res.json({ blog: results.map(blog => blog.name) })
-      return null
-    })
-    .catch(err => {
-      console.log(err)
-      res.status(500).json({ message: 'Somthing went wrong' })
-    })
+router.get('/techblog', async (req, res) => {
+  try {
+    const blog = await db.getTechBlog()
+    res.json({ blog })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
+  }
+})
+
+router.post('/', async (req, res) => {
+  const post = req.body.newPost
+  try {
+    const blog = await db.addPost(post)
+    res.json({ blog })
+  } catch (err) {
+    console.log(err)
+    res.status(500).send(err.message)
+  }
 })
 
 module.exports = router
