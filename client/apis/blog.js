@@ -8,3 +8,13 @@ export function getTechBlog () {
       return res.body.blog
     })
 }
+
+export function postTechBlog (newPost) {
+  return request.post(rootUrl + '/blog/techblog')
+    .send({
+      techPost: newPost
+    })
+    .then(res => {
+      return res.body.blog
+    })
+}

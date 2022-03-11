@@ -1,4 +1,4 @@
-import { getTechBlog } from '../apis/blog'
+import { getTechBlog, postTechBlog } from '../apis/blog'
 
 export const SET_BLOG = 'SET_BLOG'
 export const SET_POSTS_PENDING = 'SET_POSTS_PENDING'
@@ -26,9 +26,10 @@ export function fetchTechBlog () {
   }
 }
 
-export function addNewPost (newPost) {
+export function addTechPost (newPost) {
+  console.log(newPost)
   return dispatch => {
-    return addNewPost(newPost)
+    return postTechBlog(newPost)
       .then(posts => {
         dispatch(setPostsSuccess(posts))
         return null

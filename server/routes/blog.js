@@ -14,6 +14,17 @@ router.get('/techblog', async (req, res) => {
   }
 })
 
+router.post('/techblog', async (req, res) => {
+  const post = req.body.techPost
+  try {
+    const blog = await db.addTechPost(post)
+    res.json({ blog })
+  } catch (err) {
+    console.log(err)
+    res.status(500).send(err.message)
+  }
+})
+
 router.post('/', async (req, res) => {
   const post = req.body.newPost
   try {

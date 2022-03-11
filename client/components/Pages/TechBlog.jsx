@@ -5,11 +5,11 @@ import {
   Center,
   Input
 } from '@chakra-ui/react'
-import { fetchTechBlog, addNewPost } from '../../actions'
+import { fetchTechBlog, addTechPost } from '../../actions'
 
 function TechBlog () {
   const blog = useSelector(state => state.blog)
-  const [newPost, setNewPost] = useState('')
+  const [newPost, setNewPost] = useState(blog)
   const dispatch = useDispatch()
 
   function handleChange (event) {
@@ -18,19 +18,18 @@ function TechBlog () {
 
   function handleAdd (event) {
     event.preventDefault()
-    dispatch(addNewPost(newPost))
+    dispatch(addTechPost(newPost))
     setNewPost('')
   }
 
   useEffect(() => {
     dispatch(fetchTechBlog())
   }, [2])
-  console.log(blog)
   return (
     <div>
       <Box bg='purple.50' text='purple.200' height='1000px'>
         <Center>
-          {blog.map((post) => post.name)}
+          {blog.map((post) => post.content)}
           <Input
             content="addPost"
             onChange={handleChange}
