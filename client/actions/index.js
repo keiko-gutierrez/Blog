@@ -1,20 +1,68 @@
-import { getFruits } from '../apis/fruits'
+import { getTechBlog, postTechBlog } from '../apis/blog'
 
-export const SET_FRUITS = 'SET_FRUITS'
+export const SET_BLOG = 'SET_BLOG'
+export const SET_POSTS_PENDING = 'SET_POSTS_PENDING'
+export const SET_POSTS_SUCCESS = 'SET_POSTS_SUCCESS'
+export const SET_ERROR = 'SET_ERROR'
+export const SET_POST = 'SET_POST'
 
-export function setFruits (fruits) {
+export function setBlog (blog) {
   return {
-    type: SET_FRUITS,
-    fruits
+    type: SET_BLOG,
+    blog
   }
 }
 
-export function fetchFruits () {
+export function fetchTechBlog () {
   return dispatch => {
-    return getFruits()
-      .then(fruits => {
-        dispatch(setFruits(fruits))
+    return getTechBlog()
+      .then(blog => {
+        dispatch(setBlog(blog))
         return null
       })
+      .catch(err => {
+        dispatch(setError(err.message))
+      })
+  }
+}
+
+export function addTechPost (newPost) {
+  console.log(newPost)
+  return dispatch => {
+    return postTechBlog(newPost)
+      .then(posts => {
+        dispatch(setPostsSuccess(posts))
+        return null
+      })
+      .catch(err => {
+        dispatch(setError(err.message))
+      })
+  }
+}
+
+export function setPostsPending () {
+  return {
+    type: SET_POSTS_PENDING
+  }
+}
+
+export function setPostsSuccess (posts) {
+  return {
+    type: SET_POSTS_SUCCESS,
+    posts
+  }
+}
+
+export function setError (errMessage) {
+  return {
+    type: SET_ERROR,
+    errMessage
+  }
+}
+
+export function setNewPost (errMessage) {
+  return {
+    type: SET_POST,
+    errMessage
   }
 }

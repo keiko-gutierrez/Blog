@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux'
 
-import fruits from './fruits'
+import blog from './blog'
+import loading from './loading'
+import errMessage from './errMessage'
 
 export default combineReducers({
-  fruits
+  blog,
+  loading,
+  errMessage
 })
