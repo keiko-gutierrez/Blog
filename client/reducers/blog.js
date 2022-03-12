@@ -1,6 +1,6 @@
 import { SET_BLOG, SET_POSTS_SUCCESS } from '../actions'
 
-const initialState = [{ content: 'default' }]
+const initialState = [{ content: '' }]
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
