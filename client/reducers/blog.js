@@ -1,10 +1,11 @@
-import { SET_BLOG } from '../actions'
+import { SET_BLOG, SET_POSTS_SUCCESS } from '../actions'
 
-const initialState = []
+const initialState = [{ content: '' }]
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_BLOG:
+    case SET_POSTS_SUCCESS:
       return action.blog
     default:
       return state

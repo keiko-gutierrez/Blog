@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import store from '../../store'
-import { editBlog, deleteBlog } from '../../actions'
+import { deleteBlog } from '../../actions'
 import {
   Box,
   Center,
