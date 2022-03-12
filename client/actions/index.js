@@ -27,7 +27,6 @@ export function fetchTechBlog () {
 }
 
 export function addTechPost (newPost) {
-  console.log(newPost)
   return dispatch => {
     return postTechBlog(newPost)
       .then(posts => {
@@ -47,9 +46,10 @@ export function setPostsPending () {
 }
 
 export function setPostsSuccess (posts) {
+  console.log(posts)
   return {
     type: SET_POSTS_SUCCESS,
-    posts
+    blog: posts
   }
 }
 

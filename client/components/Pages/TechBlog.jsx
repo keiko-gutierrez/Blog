@@ -8,7 +8,7 @@ import {
 import { fetchTechBlog, addTechPost } from '../../actions'
 
 function TechBlog () {
-  const blog = useSelector(state => state.blog)
+  const blog = useSelector(state => state.blog[0].content)
   const [newPost, setNewPost] = useState(blog)
   const dispatch = useDispatch()
 
@@ -24,14 +24,17 @@ function TechBlog () {
 
   useEffect(() => {
     dispatch(fetchTechBlog())
-  }, [2])
+    setNewPost(blog)
+  }, [blog])
+
   return (
     <div>
       <Box bg='purple.50' text='purple.200' height='1000px'>
         <Center>
-          {blog.map((post) => post.content)}
+          {/* {blog.map((post) => post.content)} */}
+      TechBlog:
           <Input
-            content="addPost"
+            // content="addPost"
             onChange={handleChange}
             value={newPost} />
           <Input type='submit' onClick={handleAdd} />
